@@ -2,7 +2,7 @@ import pandas as pd
 import folium
 
 # Read data from Excel
-data = pd.read_excel('your_excel_file.xlsx')
+data = pd.read_excel('C:\Users\charl\Downloads\iata-icao.xls')
 
 # Create a map
 mymap = folium.Map(location=[51.505, -0.09], zoom_start=3)
