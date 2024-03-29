@@ -37,9 +37,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     map.locate({ setView: true, maxZoom: 16 });
 
+    let greenIcon = L.icon({
+        iconUrl: 'https://i.im.ge/2024/03/29/WDbQra.Logo-CHC.png',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize: [20, 20], // size of the icon
+        shadowSize: [50, 64], // size of the shadow
+        iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+
+    // Listen for the locationfound event on the map
     map.on('locationfound', function (e) {
-        L.marker(e.latlng).addTo(map)
-            .bindPopup("You are here").openPopup();
+        // Create a new marker with the greenIcon and add it to the map
+        var marker = L.marker(e.latlng, { icon: greenIcon }).addTo(map);
+
+        // Bind a popup to the marker
+        marker.bindPopup("You are here").openPopup();
     });
 
     map.on('locationerror', function () {
